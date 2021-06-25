@@ -1,0 +1,34 @@
+version: 0.0
+os: windows
+files:
+  - source: \
+    destination: D:\Data\ciremdup.com
+    overwrite: yes
+# permissions:
+  # - object: /home/ubuntu/app/codedeploy
+    # pattern: "*.sh"
+    # owner: root
+    # mode: 775
+    # type:
+      # - file
+hooks:
+  beforeinstall:
+    - location: \before_install.bat
+      # runas: root
+      timeout: 300
+  AfterInstall:
+    - location: \after_install.bat
+      # runas: root
+      timeout: 300
+  ApplicationStart:
+    - location: \app_start.bat
+      # runas: root
+      timeout: 60
+  Applicationstop:
+    - location: \app_stop.bat
+      # runas: root
+      timeout: 300
+  ValidateService:
+    - location: \validate_service.bat
+      # runas: root
+      timeout: 300
